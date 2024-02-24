@@ -2,7 +2,9 @@
 import { HeroParallax } from "./components/Hero";
 import { Bio } from "./components/Bio";
 import Projects from "../app/components/Projects"
-import MacbookScrollDemo from "./components/OnlineResume"
+import { Skills } from "./components/Skills"
+
+
 
 export default function Home() {
   return (
@@ -10,7 +12,7 @@ export default function Home() {
       <HeroParallax />
       <Bio />
       <Projects />
-      <MacbookScrollDemo />
+      <Skills />
     </main>
   );
 }
