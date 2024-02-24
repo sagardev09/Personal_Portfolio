@@ -148,7 +148,7 @@ export const HeroParallax = () => {
     return (
         <div
             ref={ref}
-            className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+            className="h-[265vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
         >
             <Header />
             <motion.div
@@ -195,7 +195,7 @@ export const HeroParallax = () => {
 export const Header = () => {
     return (
         <div className="flex flex-col items-center justify-center h-[40rem]  ">
-            <p className="text-neutral-700 dark:text-neutral-200 text-xs sm:text-base  ">
+            <p className="text-white  text-xs sm:text-base  ">
                 Welcome to My Portfolio
             </p>
             <TypewriterEffectSmooth words={words} />
@@ -215,7 +215,7 @@ export const Header = () => {
                 </h1>
             </div>
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-                <button className="w-40 h-10 rounded-sm bg-black border font-bold dark:border-white border-transparent text-white text-sm">
+                <button className="w-40 h-10 rounded-sm bg-black border font-bold border-white border-transparent text-white text-sm">
                     Contact Me
                 </button>
                 <button className="w-40 h-10 rounded-sm bg-white text-black border font-bold border-black  text-sm">
