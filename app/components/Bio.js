@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import myimg from "@/public/self.jpg"
+import myimg from "../../public/self.jpg"
 import { Spotlight } from "../ui/Spotlight";
 import Image from "next/image";
 import { MaskContainer } from "../ui/MaskEffect";

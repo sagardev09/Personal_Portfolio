@@ -8,21 +8,21 @@ import {
     useSpring,
 
 } from "framer-motion";
-import img1 from "@/public/1.png"
-import img2 from "@/public/2.png"
-import img3 from "@/public/3.png"
-import img4 from "@/public/4.png"
-import img5 from "@/public/5.png"
-import img6 from "@/public/6.jpeg"
-import img7 from "@/public/7.png"
-import img8 from "@/public/8.png"
-import img9 from "@/public/9.png"
-import img10 from "@/public/10.jpeg"
-import img11 from "@/public/11.jpeg"
-import img12 from "@/public/12.png"
-import img13 from "@/public/13.png"
-import img14 from "@/public/14.png"
-import img15 from "@/public/15.png"
+import img1 from "../../public/1.png"
+import img2 from "../../public/2.png"
+import img3 from "../../public/3.png"
+import img4 from "../../public/4.png"
+import img5 from "../../public/5.png"
+import img6 from "../../public/6.jpeg"
+import img7 from "../../public/7.png"
+import img8 from "../..//public/8.png"
+import img9 from "../../public/9.png"
+import img10 from "../../public/10.jpeg"
+import img11 from "../../public/11.jpeg"
+import img12 from "../../public/12.png"
+import img13 from "../../public/13.png"
+import img14 from "../../public/14.png"
+import img15 from "../../public/15.png"
 import Image from "next/image";
 import Link from "next/link";
 import { words } from "../data/word";

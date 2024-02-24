@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FollowerPointerCard } from "../ui/FollowingPointer";
-import img from "@/public/1.png"
-import img2 from "@/public/self.jpg"
+import img from "../../public/1.png"
+import img2 from "../../public/self.jpg"
 
 export function FollowingPointerDemo() {
     return (
