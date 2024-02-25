@@ -199,11 +199,19 @@ export const Header = () => {
         window.location.href = 'mailto:sagardbs8121@email.com';
     };
 
-    const handleDownloadClick = () => {
+    const file_url = "https://sagardevofficial.vercel.app/cv.pdf"
 
-        const fileUrl = '../../public/cv.pdf';
-        saveAs(fileUrl, 'cv.pdf');
+    const handleDownloadClick = (url) => {
+        const filename = url.split("/").pop();
+        const aTag = document.createElement("a");
+        aTag.href = url
+        aTag.setAttribute("download", filename)
+        document.body.appendChild(aTag);
+        aTag.click()
+        window.open(url, '_blank');
+        aTag.remove()
     };
+
     return (
         <div className="flex flex-col items-center justify-center h-[40rem]  ">
             <p className="text-white  text-xs sm:text-base  ">
@@ -232,7 +240,7 @@ export const Header = () => {
                     Contact Me
                 </button>
                 <button
-                    onClick={handleDownloadClick}
+                    onClick={() => handleDownloadClick(file_url)}
                     className="w-40 h-10 rounded-sm bg-white text-black border font-bold border-black  text-sm z-50 cursor-pointer">
                     Download CV
                 </button>
@@ -249,6 +257,7 @@ export const ProductCard = (
 ) => {
     return (
         <motion.div
+            key={product?.thumbnail}
             style={{
                 x: translate,
             }}
