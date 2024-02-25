@@ -8,6 +8,7 @@ import {
     useSpring,
 
 } from "framer-motion";
+import { saveAs } from 'file-saver';
 import img1 from "../../public/1.png"
 import img2 from "../../public/2.png"
 import img3 from "../../public/3.png"
@@ -33,79 +34,79 @@ export const HeroParallax = () => {
 
     const products = [
         {
-            title: "Premium Headphones",
+
             thumbnail: img1,
-            link: "/premium-headphones",
+
         },
         {
-            title: "Smartphone Charger",
+
             thumbnail: img2,
-            link: "/smartphone-charger",
+
         },
         {
-            title: "Wireless Earbuds",
+
             thumbnail: img3,
-            link: "/wireless-earbuds",
+
         },
         {
-            title: "Fitness Tracker Watch",
+
             thumbnail: img4,
-            link: "/fitness-tracker-watch",
+
         },
         {
-            title: "Bluetooth Speaker",
+
             thumbnail: img5,
-            link: "/bluetooth-speaker",
+
         },
         {
-            title: "Laptop Backpack",
+
             thumbnail: img6,
-            link: "/laptop-backpack",
+
         },
         {
-            title: "Portable Power Bank",
+
             thumbnail: img7,
-            link: "/portable-power-bank",
+
         },
         {
-            title: "Wireless Gaming Mouse",
+
             thumbnail: img8,
-            link: "/wireless-gaming-mouse",
+
         },
         {
-            title: "Smart Home Security Camera",
+
             thumbnail: img9,
-            link: "/smart-home-security-camera",
+
         },
         {
-            title: "External Hard Drive",
+
             thumbnail: img10,
-            link: "/external-hard-drive",
+
         },
         {
-            title: "Gaming Headset",
+
             thumbnail: img11,
-            link: "/gaming-headset",
+
         },
         {
-            title: "Wireless Keyboard",
+
             thumbnail: img12,
-            link: "/wireless-keyboard",
+
         },
         {
-            title: "Smartwatch",
+
             thumbnail: img13,
-            link: "/smartwatch",
+
         },
         {
-            title: "Desk Organizer",
+
             thumbnail: img14,
-            link: "/desk-organizer",
+
         },
         {
-            title: "Wireless Charging Pad",
+
             thumbnail: img15,
-            link: "/wireless-charging-pad",
+
         },
     ];
 
@@ -148,7 +149,7 @@ export const HeroParallax = () => {
     return (
         <div
             ref={ref}
-            className="h-[265vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+            className="h-[265vh]  py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
         >
             <Header />
             <motion.div
@@ -193,14 +194,24 @@ export const HeroParallax = () => {
 };
 
 export const Header = () => {
+
+    const handleContactClick = () => {
+        window.location.href = 'mailto:sagardbs8121@email.com';
+    };
+
+    const handleDownloadClick = () => {
+
+        const fileUrl = '../../public/cv.pdf';
+        saveAs(fileUrl, 'cv.pdf');
+    };
     return (
         <div className="flex flex-col items-center justify-center h-[40rem]  ">
             <p className="text-white  text-xs sm:text-base  ">
                 Welcome to My Portfolio
             </p>
             <TypewriterEffectSmooth words={words} />
-            <div className="mb-6">
-                <h1 className="text-white text-[38px] font-extrabold">
+            <div className="mb-6 sm:p-0 px-4">
+                <h1 className="text-white text-[38px] font-extrabold text-center">
                     I make
                     <span className="relative text-[#a6ff96] my-0 mx-[15px] inline-block">
                         <span className="absolute top-0 left-0 w-full h-full bg-[#b1fa97] opacity-10 -rotate-1">
@@ -215,10 +226,14 @@ export const Header = () => {
                 </h1>
             </div>
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-                <button className="w-40 h-10 rounded-sm bg-black border font-bold border-white border-transparent text-white text-sm">
+                <button
+                    onClick={handleContactClick}
+                    className="w-40 h-10 rounded-sm bg-black border font-bold border-white border-transparent text-white text-sm cursor-pointer z-50">
                     Contact Me
                 </button>
-                <button className="w-40 h-10 rounded-sm bg-white text-black border font-bold border-black  text-sm">
+                <button
+                    onClick={handleDownloadClick}
+                    className="w-40 h-10 rounded-sm bg-white text-black border font-bold border-black  text-sm z-50 cursor-pointer">
                     Download CV
                 </button>
             </div>
@@ -241,11 +256,11 @@ export const ProductCard = (
                 y: -20,
                 transition: { ease: "easeInOut" }
             }}
-            key={product?.title}
+
             className="group/product h-96 w-[30rem] relative flex-shrink-0"
         >
-            <Link
-                href={product?.link}
+            <div
+
                 className="block group-hover/product:shadow-2xl "
             >
                 <Image
@@ -253,13 +268,11 @@ export const ProductCard = (
                     height="600"
                     width="600"
                     className="object-cover object-left-top absolute h-full w-full inset-0"
-                    alt={product?.title}
+                    alt=""
                 />
-            </Link>
-            <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-            <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-                {product?.title}
-            </h2>
+            </div>
+            <div className="absolute inset-0 h-full w-full opacity-0  bg-black pointer-events-none"></div>
+
         </motion.div>
     );
 };

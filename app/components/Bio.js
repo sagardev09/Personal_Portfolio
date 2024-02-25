@@ -16,11 +16,11 @@ export function Bio() {
                 className="-top-40 right-0 md:right-60 md:-top-20"
                 fill="gray"
             />
-            <div className=" p-4 max-w-[800px]  mx-auto flex flex-col items-center justify-center relative z-10  w-full pt-20 md:pt-0">
-                <Image src={myimg} alt="" className="h-[800px] w-[600px] rounded-sm object-contain" />
+            <div className=" p-4 max-w-[800px]  mx-auto flex flex-col items-center justify-center relative z-10  w-full sm:pt-20 pt-4 md:pt-0">
+                <Image src={myimg} alt="" className="sm:h-[800px] sm:w-[600px] h-[600px] w-[400px] rounded-sm object-contain" />
                 <h1 className="mt-4 text-[24px] font-medium  text-neutral-300 text-left w-full">
                     Short Bio</h1>
-                <div className="h-full w-full flex items-center justify-center  overflow-hidden">
+                <div className="sm:h-full h-[400px] w-full flex items-center justify-center  overflow-hidden">
                     <MaskContainer
                         revealText={
                             <p className="text-neutral-300  text-[18px] font-bold text-balance">
