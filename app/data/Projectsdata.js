@@ -27,7 +27,7 @@ const projectsData = [
         description: "A simple web application to create groups and chat. Users can join group of similar interests.",
         githubLink: "https://github.com/sagardev09/RandomGc",
         liveLink: "https://random-gc.vercel.app/",
-        img: "https://cdn.dribbble.com/users/948834/screenshots/14470620/media/05c8496ea3ebcd1ecf86bf6c9599070e.png"
+        img: "https://i.pinimg.com/originals/b8/88/6d/b8886dca2122cfdf146d0060e277ab49.png"
     },
     {
         projectName: "CodePen Clone",
@@ -49,6 +49,13 @@ const projectsData = [
         githubLink: "https://github.com/sagardev09/UIForge",
         liveLink: "https://ui-forge.vercel.app/",
         img: "https://miro.medium.com/v2/resize:fit:2000/1*VjKMzbdLI019fD6L66Cj8Q.png"
+    },
+    {
+        projectName: "SagaMusic",
+        description: "A platform for for song enthusiast . It has a large number of free songs . Users can download songs for free.",
+        githubLink: "https://github.com/sagardev09/sagamusic",
+        liveLink: "https://sagamusic.vercel.app/",
+        img: "https://cdn.dribbble.com/users/1936906/screenshots/4933761/attachments/1106323/v_retina.png"
     },
 ];
 
