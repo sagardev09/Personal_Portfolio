@@ -34,79 +34,64 @@ export const HeroParallax = () => {
 
     const products = [
         {
-
+            id: 1,
             thumbnail: img1,
-
         },
         {
-
+            id: 2,
             thumbnail: img2,
-
         },
         {
-
+            id: 3,
             thumbnail: img3,
-
         },
         {
-
+            id: 4,
             thumbnail: img4,
-
         },
         {
-
+            id: 5,
             thumbnail: img5,
-
         },
         {
-
+            id: 6,
             thumbnail: img6,
-
         },
         {
-
+            id: 7,
             thumbnail: img7,
-
         },
         {
-
+            id: 8,
             thumbnail: img8,
-
         },
         {
-
+            id: 9,
             thumbnail: img9,
-
         },
         {
-
+            id: 10,
             thumbnail: img10,
-
         },
         {
-
+            id: 11,
             thumbnail: img11,
-
         },
         {
-
+            id: 12,
             thumbnail: img12,
-
         },
         {
-
+            id: 13,
             thumbnail: img13,
-
         },
         {
-
+            id: 14,
             thumbnail: img14,
-
         },
         {
-
+            id: 15,
             thumbnail: img15,
-
         },
     ];
 
@@ -166,7 +151,7 @@ export const HeroParallax = () => {
                         <ProductCard
                             product={product}
                             translate={translateX}
-                            key={product.title}
+                            key={product.id}
                         />
                     ))}
                 </motion.div>
@@ -175,7 +160,7 @@ export const HeroParallax = () => {
                         <ProductCard
                             product={product}
                             translate={translateXReverse}
-                            key={product.title}
+                            key={product.id}
                         />
                     ))}
                 </motion.div>
@@ -184,7 +169,7 @@ export const HeroParallax = () => {
                         <ProductCard
                             product={product}
                             translate={translateX}
-                            key={product.title}
+                            key={product.id}
                         />
                     ))}
                 </motion.div>
@@ -273,6 +258,7 @@ export const ProductCard = (
                 className="block group-hover/product:shadow-2xl "
             >
                 <Image
+                loading="lazy"
                     src={product?.thumbnail}
                     height="600"
                     width="600"
