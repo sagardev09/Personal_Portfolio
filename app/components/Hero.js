@@ -89,12 +89,12 @@ export const Header = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-[55rem] gap-7 ">
+    <div className="flex flex-col items-center justify-center lg:h-[50rem] md:h-[45rem] sm:h-[40rem] h-[35rem] gap-7 ">
       <p className="text-white  text-xs sm:text-base mb-8 ">
         Welcome to My Portfolio
       </p>
       <div className="mb-6 sm:p-0 px-4 group relative flex items-center">
-        <h1 className="text-white text-[60px] font-extrabold text-center">
+        <h1 className="text-white lg:text-[60px] sm:text-[40px] text-[20px] font-extrabold text-center">
           Hey I
           <span className="relative text-[#E4003A] my-0 mx-[15px] inline-block">
             <span className="absolute top-0 left-0 w-full h-full bg-[#E4003A] opacity-10 -rotate-1"></span>
@@ -121,7 +121,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="mb-6 sm:p-0 px-4 group relative flex items-center">
-        <h1 className="text-white text-[38px] font-extrabold text-center">
+        <h1 className="text-white lg:text-[38px] sm:text-[28px] text-[20px] font-extrabold text-center">
           I make
           <span className="relative text-[#a6ff96] my-0 mx-[15px] inline-block">
             <span className="absolute top-0 left-0 w-full h-full bg-[#b1fa97] opacity-10 -rotate-1"></span>
@@ -147,16 +147,16 @@ export const Header = () => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
+      <div className="flex flex-row sm:gap-4  gap-2 space-x-4">
         <button
           onClick={handleContactClick}
-          className="w-40 h-10 rounded-sm bg-black border font-bold border-white border-transparent text-white text-sm cursor-pointer z-50"
+          className="sm:w-40 sm:h-10 w-32 h-8 sm:text-sm text-xs rounded-sm bg-black border font-bold border-white border-transparent text-white  cursor-pointer z-50"
         >
           Contact Me
         </button>
         <button
           onClick={() => handleDownloadClick(file_url)}
-          className="w-40 h-10 rounded-sm bg-white text-black border font-bold border-black  text-sm z-50 cursor-pointer"
+          className="sm:w-40 sm:h-10 w-32 h-8 sm:text-sm text-xs  rounded-sm bg-white text-black border font-bold border-black  z-50 cursor-pointer"
         >
           Download CV
         </button>

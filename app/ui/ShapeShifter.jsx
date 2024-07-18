@@ -205,14 +205,14 @@ const ShapeShifter = ({
       variants={shapeVariants}
       animate="animate"
       className={cn(
-        "text-md group flex  w-full min-w-fit flex-col items-center  justify-center gap-8 font-bold text-foreground transition-all sm:flex-row sm:text-xl",
+        "text-md group flex  w-full min-w-fit flex-col items-center  justify-center gap-6 sm:gap-6 md:gap-8 font-bold text-foreground transition-all sm:flex-row sm:text-xl",
         containerClassName
       )}
     >
       <motion.div
         variants={textVariants}
         animate="animate"
-        className="text-4xl font-extrabold"
+        className="lg:text-4xl sm:text-xl text-sm font-extrabold"
       >
         <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-transparent bg-clip-text animate-gradient">
           {prefix}
@@ -220,13 +220,11 @@ const ShapeShifter = ({
       </motion.div>
       <div
         className={cn(
-          "relative overflow-hidden  p-0 transition-all ease-in-out inset-0 bg-gradient-to-br from-blue-500 via-cyan-400 to-yellow-400 ",
+          "relative overflow-hidden lg:h-[300px] lg:w-[300px] sm:h-[200px] sm:w-[200px] h-[120px] w-[120px]  p-0 transition-all ease-in-out inset-0 bg-gradient-to-br from-blue-500 via-cyan-400 to-yellow-400 ",
           currentStyle.shape,
           className
         )}
         style={{
-          width: "300px",
-          height: "300px",
           transition: "all 0.5s ease-in-out",
           transform: `scale(${currentStyle.scale})`,
         }}
@@ -236,7 +234,7 @@ const ShapeShifter = ({
       <motion.div
         variants={textVariants}
         animate="animate"
-        className="text-4xl font-extrabold"
+        className="lg:text-4xl sm:text-xl text-sm  font-extrabold"
       >
         <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-transparent bg-clip-text animate-gradient">
           {suffix}
