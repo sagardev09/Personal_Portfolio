@@ -1,10 +1,11 @@
-"use client"
-import { HeroParallax } from "./components/Hero";
+"use client";
+import HeroParallax from "./components/Hero";
 import { Bio } from "./components/Bio";
-import Projects from "../app/components/Projects"
-import { Skills } from "./components/Skills"
-import { Footer } from "./components/Footer"
+import Projects from "../app/components/Projects";
+import { Skills } from "./components/Skills";
+import { Footer } from "./components/Footer";
 import ReactGA from "react-ga4";
+import OrbitingItems from "./ui/HeroOrbit";
 
 ReactGA.initialize("G-XMYQLQYHSK");
 

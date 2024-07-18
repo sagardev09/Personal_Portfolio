@@ -1,273 +1,169 @@
-"use client";
 import React from "react";
-import { TypewriterEffectSmooth } from "./TypeWriter";
-import {
-    motion,
-    useScroll,
-    useTransform,
-    useSpring,
+import { Lights } from "../ui/BackgroundLights";
+import { cn } from "../../utils/cn";
+import Meteors from "../ui/MeteorBackground";
+import ShapeShifter from "../ui/ShapeShifter";
 
-} from "framer-motion";
-import { saveAs } from 'file-saver';
-import img1 from "../../public/1.png"
-import img2 from "../../public/2.png"
-import img3 from "../../public/3.png"
-import img4 from "../../public/4.png"
-import img5 from "../../public/5.png"
-import img6 from "../../public/6.jpeg"
-import img7 from "../../public/7.png"
-import img8 from "../..//public/8.png"
-import img9 from "../../public/9.png"
-import img10 from "../../public/10.jpeg"
-import img11 from "../../public/11.jpeg"
-import img12 from "../../public/12.png"
-import img13 from "../../public/13.png"
-import img14 from "../../public/14.png"
-import img15 from "../../public/15.png"
-import Image from "next/image";
-import Link from "next/link";
-import { words } from "../data/word";
-
-export const HeroParallax = () => {
-
-
-
-    const products = [
-        {
-            id: 1,
-            thumbnail: img1,
-        },
-        {
-            id: 2,
-            thumbnail: img2,
-        },
-        {
-            id: 3,
-            thumbnail: img3,
-        },
-        {
-            id: 4,
-            thumbnail: img4,
-        },
-        {
-            id: 5,
-            thumbnail: img5,
-        },
-        {
-            id: 6,
-            thumbnail: img6,
-        },
-        {
-            id: 7,
-            thumbnail: img7,
-        },
-        {
-            id: 8,
-            thumbnail: img8,
-        },
-        {
-            id: 9,
-            thumbnail: img9,
-        },
-        {
-            id: 10,
-            thumbnail: img10,
-        },
-        {
-            id: 11,
-            thumbnail: img11,
-        },
-        {
-            id: 12,
-            thumbnail: img12,
-        },
-        {
-            id: 13,
-            thumbnail: img13,
-        },
-        {
-            id: 14,
-            thumbnail: img14,
-        },
-        {
-            id: 15,
-            thumbnail: img15,
-        },
-    ];
-
-
-    const firstRow = products.slice(0, 5);
-    const secondRow = products.slice(5, 10);
-    const thirdRow = products.slice(10, 15);
-    const ref = React.useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end start"],
-    });
-
-    const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
-
-    const translateX = useSpring(
-        useTransform(scrollYProgress, [0, 1], [0, 1000]),
-        springConfig
-    );
-    const translateXReverse = useSpring(
-        useTransform(scrollYProgress, [0, 1], [0, -1000]),
-        springConfig
-    );
-    const rotateX = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-        springConfig
-    );
-    const opacity = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-        springConfig
-    );
-    const rotateZ = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-        springConfig
-    );
-    const translateY = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-        springConfig
-    );
-    return (
-        <div
-            ref={ref}
-            className="h-[265vh]  py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
-        >
-            <Header />
-            <motion.div
-                style={{
-                    rotateX,
-                    rotateZ,
-                    translateY,
-                    opacity,
-                }}
-                className=""
-            >
-                <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-                    {firstRow.map((product) => (
-                        <ProductCard
-                            product={product}
-                            translate={translateX}
-                            key={product.id}
-                        />
-                    ))}
-                </motion.div>
-                <motion.div className="flex flex-row  mb-20 space-x-20 ">
-                    {secondRow.map((product) => (
-                        <ProductCard
-                            product={product}
-                            translate={translateXReverse}
-                            key={product.id}
-                        />
-                    ))}
-                </motion.div>
-                <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-                    {thirdRow.map((product) => (
-                        <ProductCard
-                            product={product}
-                            translate={translateX}
-                            key={product.id}
-                        />
-                    ))}
-                </motion.div>
-            </motion.div>
-        </div>
-    );
+const HeroParallax = () => {
+  return (
+    <div className="h-[100vh] py-40 flex flex-col bg-grid-white/[0.03] relative  ">
+      <div className="absolute top-0 left-0 w-full h-full z-[0] md:block hidden">
+        <Meteors number={30} />
+      </div>
+      <div className="z-[1] animate-moveUp">
+        <Header />
+      </div>
+      <div
+        className={
+          "absolute bottom-0 left-0 w-full h-full z-[0] animate-appear"
+        }
+      >
+        <Lights />
+      </div>
+    </div>
+  );
 };
+export default HeroParallax;
 
 export const Header = () => {
-
-    const handleContactClick = () => {
-        window.location.href = 'mailto:sagardbs8121@email.com';
-    };
-
-    const file_url = "https://sagardevofficial.vercel.app/cv.pdf"
-
-    const handleDownloadClick = (url) => {
-        const filename = url.split("/").pop();
-        const aTag = document.createElement("a");
-        aTag.href = url
-        aTag.setAttribute("download", filename)
-        document.body.appendChild(aTag);
-        aTag.click()
-        window.open(url, '_blank');
-        aTag.remove()
-    };
-
-    return (
-        <div className="flex flex-col items-center justify-center h-[40rem]  ">
-            <p className="text-white  text-xs sm:text-base  ">
-                Welcome to My Portfolio
-            </p>
-            <TypewriterEffectSmooth words={words} />
-            <div className="mb-6 sm:p-0 px-4">
-                <h1 className="text-white text-[38px] font-extrabold text-center">
-                    I make
-                    <span className="relative text-[#a6ff96] my-0 mx-[15px] inline-block">
-                        <span className="absolute top-0 left-0 w-full h-full bg-[#b1fa97] opacity-10 -rotate-1">
-                        </span>
-                        Products
-                    </span>
-                    that people
-                    <span className="relative text-[#ed5ab3] my-0 mx-[15px] inline-block">
-                        <span className="absolute top-0 left-0 w-full h-full bg-[#fe56bb] opacity-10 rotate-3"></span>
-                        love.
-                    </span>
-                </h1>
-            </div>
-            <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-                <button
-                    onClick={handleContactClick}
-                    className="w-40 h-10 rounded-sm bg-black border font-bold border-white border-transparent text-white text-sm cursor-pointer z-50">
-                    Contact Me
-                </button>
-                <button
-                    onClick={() => handleDownloadClick(file_url)}
-                    className="w-40 h-10 rounded-sm bg-white text-black border font-bold border-black  text-sm z-50 cursor-pointer">
-                    Download CV
-                </button>
-            </div>
-        </div>
-    );
-};
-
-export const ProductCard = (
+  const destinations = [
     {
-        product,
-        translate,
-    }
-) => {
-    return (
-        <motion.div
-            key={product?.thumbnail}
-            style={{
-                x: translate,
-            }}
-            whileHover={{
-                y: -20,
-                transition: { ease: "easeInOut" }
-            }}
+      emoji: "💻",
+      position:
+        "-left-20 top-3 group-hover:-rotate-[10deg] group-hover:-translate-y-12 md:left-[10px] md:-top-[10px] sm:left-[80px]",
+    },
+    {
+      emoji: "🚀",
+      position:
+        "-left-[72px] top-0 group-hover:-rotate-[20deg] group-hover:-translate-x-10 md:left-[90px] md:top-[100px] sm:left-[50px] ",
+    },
+    {
+      emoji: "🔧",
+      position:
+        "right-[10px] top-0 group-hover:rotate-[10deg] group-hover:-translate-y-10 md:right-[10px] md:-top-[10px] sm:right-[80px]",
+    },
+    {
+      emoji: "📱",
+      position:
+        "right-[105px] top-0 group-hover:rotate-[20deg] group-hover:translate-x-16 md:right-[90px] md:top-[100px] sm:right-[50px]",
+    },
+  ];
 
-            className="group/product h-96 w-[30rem] relative flex-shrink-0"
-        >
-            <div
+  const treasures = [
+    {
+      emoji: "🖥️",
+      position:
+        "-left-20 top-3 group-hover:-rotate-[10deg] group-hover:-translate-y-12 md:left-[10px] md:-top-[5px] sm:left-[80px]",
+    },
+    {
+      emoji: "⚙️",
+      position:
+        "-left-[72px] top-0 group-hover:-rotate-[20deg] group-hover:-translate-x-10 md:left-[90px] md:top-[100px] sm:left-[50px]",
+    },
+    {
+      emoji: "🌐",
+      position:
+        "right-[10px] top-0 group-hover:rotate-[10deg] group-hover:-translate-y-10 md:right-[10px] md:-top-[10px] sm:right-[80px]",
+    },
+    {
+      emoji: "📊",
+      position:
+        "right-[105px] top-0 group-hover:rotate-[20deg] group-hover:translate-x-16 md:right-[90px] md:top-[100px] sm:right-[50px]",
+    },
+  ];
+  const handleContactClick = () => {
+    window.location.href = "mailto:sagardbs8121@email.com";
+  };
 
-                className="block group-hover/product:shadow-2xl "
+  const file_url = "https://sagardevofficial.vercel.app/cv.pdf";
+
+  const handleDownloadClick = (url) => {
+    const filename = url.split("/").pop();
+    const aTag = document.createElement("a");
+    aTag.href = url;
+    aTag.setAttribute("download", filename);
+    document.body.appendChild(aTag);
+    aTag.click();
+    window.open(url, "_blank");
+    aTag.remove();
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center h-[55rem] gap-7 ">
+      <p className="text-white  text-xs sm:text-base mb-8 ">
+        Welcome to My Portfolio
+      </p>
+      <div className="mb-6 sm:p-0 px-4 group relative flex items-center">
+        <h1 className="text-white text-[60px] font-extrabold text-center">
+          Hey I
+          <span className="relative text-[#E4003A] my-0 mx-[15px] inline-block">
+            <span className="absolute top-0 left-0 w-full h-full bg-[#E4003A] opacity-10 -rotate-1"></span>
+            Am Sagar.
+          </span>
+          A
+          <span className="relative text-[#AF47D2] my-0 mx-[15px] inline-block">
+            <span className="absolute top-0 left-0 w-full h-full bg-[#AF47D2] opacity-10 rotate-3"></span>
+            Full Stack Developer.
+          </span>
+        </h1>
+        <div className="duration-400 absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100">
+          {destinations.map((dest, index) => (
+            <span
+              key={index}
+              className={cn(
+                "absolute transform text-lg transition-transform duration-500 group-hover:scale-110 sm:text-3xl md:text-6xl",
+                dest.position
+              )}
             >
-                <Image
-                loading="lazy"
-                    src={product?.thumbnail}
-                    height="600"
-                    width="600"
-                    className="object-cover object-left-top absolute h-full w-full inset-0"
-                    alt=""
-                />
-            </div>
-            <div className="absolute inset-0 h-full w-full opacity-0  bg-black pointer-events-none"></div>
-
-        </motion.div>
-    );
+              {dest.emoji}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="mb-6 sm:p-0 px-4 group relative flex items-center">
+        <h1 className="text-white text-[38px] font-extrabold text-center">
+          I make
+          <span className="relative text-[#a6ff96] my-0 mx-[15px] inline-block">
+            <span className="absolute top-0 left-0 w-full h-full bg-[#b1fa97] opacity-10 -rotate-1"></span>
+            Products
+          </span>
+          that people
+          <span className="relative text-[#ed5ab3] my-0 mx-[15px] inline-block">
+            <span className="absolute top-0 left-0 w-full h-full bg-[#fe56bb] opacity-10 rotate-3"></span>
+            love.
+          </span>
+        </h1>
+        <div className="duration-400 absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100">
+          {treasures.map((gem, index) => (
+            <span
+              key={index}
+              className={cn(
+                "absolute transform text-lg transition-transform duration-500 group-hover:scale-110 sm:text-3xl md:text-6xl",
+                gem.position
+              )}
+            >
+              {gem.emoji}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
+        <button
+          onClick={handleContactClick}
+          className="w-40 h-10 rounded-sm bg-black border font-bold border-white border-transparent text-white text-sm cursor-pointer z-50"
+        >
+          Contact Me
+        </button>
+        <button
+          onClick={() => handleDownloadClick(file_url)}
+          className="w-40 h-10 rounded-sm bg-white text-black border font-bold border-black  text-sm z-50 cursor-pointer"
+        >
+          Download CV
+        </button>
+      </div>
+      <div className="mt-10">
+        <ShapeShifter />
+      </div>
+    </div>
+  );
 };
