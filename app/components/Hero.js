@@ -1,15 +1,15 @@
 import React from "react";
 import { Lights } from "../ui/BackgroundLights";
 import { cn } from "../../utils/cn";
-import Meteors from "../ui/MeteorBackground";
+// import Meteors from "../ui/MeteorBackground";
 import ShapeShifter from "../ui/ShapeShifter";
 
 const HeroParallax = () => {
   return (
     <div className="h-[100vh] py-40 flex flex-col bg-grid-white/[0.03] relative  ">
-      <div className="absolute top-0 left-0 w-full h-full z-[0] md:block hidden">
+      {/* <div className="absolute top-0 left-0 w-full h-full z-[0] md:block hidden">
         <Meteors number={30} />
-      </div>
+      </div> */}
       <div className="z-[1] animate-moveUp">
         <Header />
       </div>

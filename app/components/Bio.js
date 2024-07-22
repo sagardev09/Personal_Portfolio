@@ -1,61 +1,79 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
-import React from "react";
-import myimg from "../../public/self.jpg";
-import { Spotlight } from "../ui/Spotlight";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { MaskContainer } from "../ui/MaskEffect";
+import myimg from "../../public/self.jpg";
 
 export function Bio() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <div className="bg-grid-white/[0.02] relative  flex  h-full w-full overflow-hidden bg-black/[0.96] py-8 antialiased md:items-center md:justify-center">
-      <Spotlight
-        className="-top-40 left-0 md:-top-20 md:left-60"
-        fill="white"
-      />
-      <Spotlight
-        className="-top-40 right-0 md:-top-20 md:right-60"
-        fill="gray"
-      />
-      <div className=" relative z-10  mx-auto flex w-full max-w-[800px] flex-col items-center justify-center  p-4 pt-4 sm:pt-20 md:pt-0">
-        <Image
-          src={myimg}
-          alt=""
-          className="h-[600px] w-[400px] rounded-sm object-contain sm:h-[800px] sm:w-[600px]"
-        />
-        <h1 className="mt-4 w-full text-left  text-[24px] font-medium text-neutral-300">
-          Short Bio
-        </h1>
-        <div className="flex h-[400px] w-full items-center justify-center overflow-hidden  sm:h-full">
-          <MaskContainer
-            revealText={
-              <p className="text-balance  text-[18px] font-bold text-neutral-300">
-                {"I'm"} a product maker (UI/UX designer and front-end developer)
-                currently based in Haryana, India. {"I'm"} passionate about
-                building products that help people and make a difference in the
-                world. {"I'm"} also a big fan of open source software - which is
-                whyalmost everything I build is open source!I also love
-                educating others about technology and programming, which is why{" "}
-                {"I'm"} acontent creatorand write blogs in my free time.
-              </p>
-            }
-            className="h-full cursor-pointer text-balance text-left"
-          >
-            {"I'm"} a product maker{" "}
-            <span className="text-red-500">
-              (UI/UX designer and front-end developer)
+    <div className="relative  w-full bg-black/[0.96] overflow-hidden">
+      {/* Grid background */}
+      <div className="absolute inset-0 bg-grid-white/[0.06] z-0" />
+
+      {/* Content container */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-12">
+        {/* Image */}
+        <div
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <div className="relative">
+            <Image
+              src={myimg}
+              alt="Profile"
+              width={400}
+              height={600}
+              className="rounded-lg object-cover shadow-2xl"
+            />
+            <div className="absolute -inset-0.5 bg-white/[0.05] rounded-lg blur opacity-30" />
+            <div className="absolute -inset-1 bg-blue-500/[0.05] rounded-lg blur opacity-30 animate-pulse" />
+          </div>
+        </div>
+
+        {/* Bio content */}
+        <div
+          className={`max-w-2xl transition-all duration-1000 delay-300 ease-out ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          }`}
+        >
+          <h1 className="text-3xl font-bold text-white mb-6">Short Bio</h1>
+          <p className="text-lg text-neutral-300 leading-relaxed">
+            {"I'm"} a{" "}
+            <span className="text-red-500 font-semibold">
+              product maker (UI/UX designer and front-end developer)
             </span>{" "}
-            currently based in Haryana, India. {"I'm"} passionate about{" "}
-            <span className="text-blue-500">building products</span> that help
-            people and make a difference in the world. {"I'm"} also a big fan of
-            <span className="text-green-500"> open source software</span>- which
-            is whyalmost everything I build is open source!I also love educating
-            others about{" "}
-            <span className="text-purple-500"> technology and programming</span>{" "}
-            , which is why {"I'm"} acontent creator and write blogs in my free
+            currently based in Haryana, India. I'm passionate about{" "}
+            <span className="text-blue-500 font-semibold">
+              building products
+            </span>{" "}
+            that help people and make a difference in the world.
+          </p>
+          <p className="text-lg text-neutral-300 leading-relaxed mt-4">
+            I'm also a big fan of{" "}
+            <span className="text-green-500 font-semibold">
+              open source software
+            </span>{" "}
+            - which is why almost everything I build is open source! I love
+            educating others about{" "}
+            <span className="text-purple-500 font-semibold">
+              technology and programming
+            </span>
+            , which is why I'm a content creator and write blogs in my free
             time.
-          </MaskContainer>
+          </p>
         </div>
       </div>
+
+      {/* Decorative elements */}
+      <div className="absolute top-[5%] left-[5%] w-36 h-36 bg-white rounded-full blur-3xl animate-blob" />
+      <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-blue-500/[0.225] rounded-full blur-3xl animate-blob animation-delay-2000" />
     </div>
   );
 }
