@@ -12,9 +12,9 @@ export function Bio() {
   }, []);
 
   return (
-    <div className="relative  w-full bg-black/[0.96] overflow-hidden">
+    <div className="relative mx-auto  w-screen bg-black/[0.96] overflow-hidden ">
       {/* Grid background */}
-      <div className="absolute inset-0 bg-grid-white/[0.06] z-0" />
+      <div className="absolute inset-0 bg-grid-white/[0.06] z-0 " />
 
       {/* Content container */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-12">
@@ -43,8 +43,10 @@ export function Bio() {
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
           }`}
         >
-          <h1 className="text-3xl font-bold text-white mb-6">Short Bio</h1>
-          <p className="text-lg text-neutral-300 leading-relaxed">
+          <h1 className="lg:text-3xl text-2xl font-bold text-white mb-6">
+            Short Bio
+          </h1>
+          <p className="lg:text-lg md:text-base text-xs text-neutral-300 leading-relaxed">
             {"I'm"} a{" "}
             <span className="text-red-500 font-semibold">
               product maker (UI/UX designer and front-end developer)
@@ -55,7 +57,7 @@ export function Bio() {
             </span>{" "}
             that help people and make a difference in the world.
           </p>
-          <p className="text-lg text-neutral-300 leading-relaxed mt-4">
+          <p className="lg:text-lg md:text-base text-xs text-neutral-300 leading-relaxed mt-4">
             I'm also a big fan of{" "}
             <span className="text-green-500 font-semibold">
               open source software

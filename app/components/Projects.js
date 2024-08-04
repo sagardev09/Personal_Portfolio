@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import projectsData from "../data/Projectsdata";
 import { ProjectCard } from "./ProjectCard";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const CursorBlob = ({ mousePosition, color, delay }) => {
   return (
@@ -24,6 +29,7 @@ const CursorBlob = ({ mousePosition, color, delay }) => {
 
 const Projects = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const projectsRef = useRef(null);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -35,6 +41,29 @@ const Projects = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
+  }, []);
+
+  useGSAP(() => {
+    const projectCards = gsap.utils.toArray(projectsRef.current.children);
+
+    projectCards.forEach((card) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom-=100",
+            end: "bottom center",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
   }, []);
 
   return (
@@ -63,10 +92,13 @@ const Projects = () => {
       <div className="relative p-8 max-w-[1400px] mx-auto overflow-hidden">
         {/* Content */}
         <div className="relative z-10">
-          <h1 className="text-white uppercase font-semibold text-2xl mb-8">
+          <h1 className="text-white uppercase font-semibold lg:text-2xl md:text-xl text-base mb-8">
             Some of the Projects
           </h1>
-          <div className="flex items-center justify-center gap-10 flex-wrap">
+          <div
+            ref={projectsRef}
+            className="flex items-center justify-center gap-10 flex-wrap"
+          >
             {projectsData.map((item) => {
               return (
                 <ProjectCard
